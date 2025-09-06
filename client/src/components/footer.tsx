@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { FileText, Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
+import logoImage from "@assets/generated_images/TechDoc_Profesional_business_logo_af94b23a.png";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,7 +11,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="col-span-2">
             <div className="flex items-center mb-4">
-              <FileText className="text-primary text-2xl mr-2" />
+              <img src={logoImage} alt="TechDoc Profesional" className="h-8 w-auto mr-2" />
               <span className="text-xl font-bold">TechDoc Profesional</span>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">

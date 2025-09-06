@@ -1,8 +1,9 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
-import { FileText, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logoImage from "@assets/generated_images/TechDoc_Profesional_business_logo_af94b23a.png";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -22,7 +23,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center" data-testid="link-home-logo">
-              <FileText className="text-primary text-2xl mr-2" />
+              <img src={logoImage} alt="TechDoc Profesional" className="h-8 w-auto mr-2" />
               <span className="text-xl font-bold text-foreground">TechDoc Profesional</span>
             </Link>
           </div>
