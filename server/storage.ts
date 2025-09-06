@@ -41,6 +41,8 @@ export class MemStorage implements IStorage {
     const inquiry: Inquiry = { 
       ...insertInquiry, 
       id, 
+      phone: insertInquiry.phone ?? null,
+      timeline: insertInquiry.timeline ?? null,
       createdAt: new Date() 
     };
     this.inquiries.set(id, inquiry);
