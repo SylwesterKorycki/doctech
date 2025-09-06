@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="col-span-2">
             <div className="flex items-center mb-4">
               <FileText className="text-primary text-2xl mr-2" />
-              <span className="text-xl font-bold">TechDoc Solutions</span>
+              <span className="text-xl font-bold">TechDoc Profesional</span>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
               Professional technical documentation services for corporations. 
@@ -52,7 +52,7 @@ export default function Footer() {
         
         <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-300 text-sm" data-testid="text-copyright">
-            &copy; {currentYear} TechDoc Solutions. All rights reserved.
+            &copy; {currentYear} TechDoc Profesional. All rights reserved.
           </p>
           <p className="text-gray-300 text-sm mt-2 md:mt-0" data-testid="text-tagline">
             Professional documentation services for enterprise clients.

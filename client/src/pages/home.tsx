@@ -16,7 +16,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4" data-testid="heading-why-choose">
-              Why Choose TechDoc Solutions?
+              Why Choose TechDoc Profesional?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-why-choose-subtitle">
               Save time and resources by outsourcing your technical documentation needs to a specialist.

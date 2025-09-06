@@ -14,7 +14,7 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl font-bold text-foreground mb-6" data-testid="heading-about">
-                About TechDoc Solutions
+                About TechDoc Profesional
               </h1>
               <p className="text-xl text-muted-foreground mb-6 leading-relaxed" data-testid="text-about-intro">
                 I'm a technical documentation specialist focused on helping corporations streamline 

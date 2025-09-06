@@ -5,7 +5,7 @@ export default function Testimonials() {
   const testimonials = [
     {
       rating: 5,
-      content: "TechDoc Solutions saved our engineering team countless hours on documentation. The quality and turnaround time exceeded our expectations.",
+      content: "TechDoc Profesional saved our engineering team countless hours on documentation. The quality and turnaround time exceeded our expectations.",
       author: "Sarah Johnson",
       position: "Engineering Manager, TechCorp"
     },

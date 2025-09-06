@@ -1,8 +1,8 @@
-# TechDoc Solutions
+# TechDoc Profesional
 
 ## Overview
 
-TechDoc Solutions is a professional technical documentation service website built for corporations seeking to outsource their documentation needs. The application serves as a business website showcasing documentation services including data sheets, user manuals, training materials, CPI documentation, and product renders. It features a contact form for inquiries, portfolio showcase, pricing information, and testimonials.
+TechDoc Profesional is a professional technical documentation service website built for corporations seeking to outsource their documentation needs. The application serves as a business website showcasing documentation services including data sheets, user manuals, training materials, CPI documentation, and product renders. It features a contact form for inquiries, portfolio showcase, pricing information, and testimonials.
 
 ## User Preferences
 

@@ -23,7 +23,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center" data-testid="link-home-logo">
               <FileText className="text-primary text-2xl mr-2" />
-              <span className="text-xl font-bold text-foreground">TechDoc Solutions</span>
+              <span className="text-xl font-bold text-foreground">TechDoc Profesional</span>
             </Link>
           </div>
           
