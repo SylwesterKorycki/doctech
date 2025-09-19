@@ -3,6 +3,8 @@ import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Building, Zap, ServerCog, Handshake, Mail, Download } from "lucide-react";
+import workspaceImg from "@assets/generated_images/workspace.png";
+
 
 export default function About() {
   return (
@@ -16,16 +18,35 @@ export default function About() {
               <h1 className="text-4xl font-bold text-foreground mb-6" data-testid="heading-about">
                 About TechDoc Profesional
               </h1>
-              <p className="text-xl text-muted-foreground mb-6 leading-relaxed" data-testid="text-about-intro">
-                I'm a technical documentation specialist focused on helping corporations streamline 
-                their documentation processes while maintaining the highest professional standards.
-              </p>
-              <p className="text-muted-foreground mb-8 leading-relaxed" data-testid="text-about-approach">
-                My approach is simple yet effective: take the documentation tasks that consume your 
-                valuable engineering and technical resources, and handle them with precision and 
-                professionalism. Whether it's enhancing existing layouts with accurate information 
-                or creating comprehensive training materials, I ensure your team can focus on what they do best.
-              </p>
+              <p 
+  className="text-xl text-muted-foreground mb-6 leading-relaxed" 
+  data-testid="text-about-intro"
+>
+  We transform complex technical knowledge into clear documentation with precision and professionalism. 
+  allowing your experts to focus on core innovations.
+  
+</p>
+
+              <div className="text-muted-foreground leading-relaxed" data-testid="text-about-approach">
+  <p className="mb-4">
+    At TechDocProfesional, we specialize in creating clear, precise, and professional documentation — 
+    from data sheets and installation manuals to technical guides and product renders.
+  </p>
+
+  <p className="mb-4">
+    Our mission is to transform complex technical knowledge into accessible, reliable documentation 
+    that supports your business goals. We also believe that your highly qualified resources should focus on what matters most — innovation, 
+    core projects, and solving complex challenges.
+  </p>
+
+  <p className="mb-4">
+     
+    By combining hands-on industry experience with a passion for technical writing, TechDocPro delivers 
+    documentation that not only informs but also builds trust and strengthens your brand.
+  </p>
+</div>
+
+
               
               <div className="grid sm:grid-cols-2 gap-6 mb-8">
                 <div className="flex items-start space-x-3" data-testid="feature-corporate-focus">
@@ -65,20 +86,23 @@ export default function About() {
                     Get In Touch
                   </Button>
                 </Link>
-                <Button variant="outline" size="lg" className="hover-lift" data-testid="button-download-capabilities">
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Capabilities
-                </Button>
+                
               </div>
             </div>
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Professional freelancer workspace" 
-                className="rounded-2xl shadow-lg w-full h-auto hover-lift" 
-                data-testid="img-about-workspace"
-              />
-            </div>
+           <div className="text-center max-w-xl mx-auto flex flex-col items-center">
+  <img
+    src={workspaceImg}
+    alt="Professional freelancer workspace"
+    className="rounded-2xl w-full max-w-md h-auto hover-lift"
+    data-testid="img-about-workspace"
+  />
+  <p className="mt-4 text-base font-normal text-foreground leading-relaxed text-justify">
+    As the founder of <strong>TechDec Professional</strong>, I bring nearly two decades of expertise not only in mechanical, electrical, and electronics projects, 
+    but also across diverse industrial sectors. This extensive experience allows me to fully understand our clients' 
+    challenges and deliver technical and product documentation that meets the highest standards of accuracy, clarity, and professionalism.
+  </p>
+</div>
+
           </div>
         </div>
       </section>

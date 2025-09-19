@@ -4,16 +4,16 @@ import { Table, TrendingUp, Book, List, Box, GraduationCap, Edit, Rocket } from 
 export default function ServicesGrid() {
   const services = [
     {
-      icon: <Table className="text-blue-600 text-xl" />,
-      title: "Data Sheets",
-      description: "Professional product data sheets with technical specifications, performance metrics, and compliance information.",
-      features: ["Technical specifications", "Performance data", "Compliance standards"]
+      icon: <Table className="text-blue-600 text-xl text-muted-foreground text-lg leading-relaxed text-justify" />,
+      title: "Complex Service",
+      description: "Professional documentation created from scratch. The complete documentation package your product needs.",
+      features: ["Layout Design", "Graphic design", "Filling with data"]
     },
     {
       icon: <TrendingUp className="text-green-600 text-xl" />,
-      title: "CPI Documentation",
-      description: "Continuous Process Improvement documentation including process maps, analysis reports, and implementation guides.",
-      features: ["Process mapping", "Analysis reports", "Implementation guides"]
+      title: "Data Sheets",
+      description: "Professional product data sheets with technical specifications, performance metrics, and compliance information.",
+      features: ["Technical specifications", "Performance data", "Compliance standards"]
     },
     {
       icon: <Book className="text-purple-600 text-xl" />,
@@ -54,9 +54,9 @@ export default function ServicesGrid() {
         </div>
 
         {/* Current Service Approach */}
-        <div className="mb-16">
+        <div className="mb-18">
           <h3 className="text-2xl font-semibold text-foreground mb-8 text-center" data-testid="heading-current-approach">
-            Current Service Approach
+            
           </h3>
           <div className="bg-accent/50 border border-border rounded-lg p-8 mb-12">
             <div className="flex items-start space-x-4">
@@ -64,13 +64,15 @@ export default function ServicesGrid() {
                 <Edit className="text-primary-foreground text-xl" />
               </div>
               <div>
-                <h4 className="text-xl font-semibold text-foreground mb-2" data-testid="heading-layout-enhancement">
+                <h4 className="text-3xl font-semibold text-foreground mb-2" data-testid="heading-layout-enhancement">
                   Client Layout Enhancement
                 </h4>
                 <p className="text-muted-foreground text-lg leading-relaxed" data-testid="text-layout-enhancement">
-                  You provide the document layout and structure. I focus on adding accurate technical information, 
+                  You provide the document layout and structure. We focus on adding accurate technical information, 
                   professional formatting, and ensuring consistency across all materials. This approach allows 
                   for faster turnaround times while maintaining your established brand guidelines.
+
+                  During the implementation of your project, we will be in constant contact so that the final result is 100% satisfactory to you.
                 </p>
               </div>
             </div>
@@ -93,7 +95,7 @@ export default function ServicesGrid() {
                 <p className="text-muted-foreground mb-4">{service.description}</p>
                 <ul className="text-sm text-muted-foreground space-y-1">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center">
+                    <li key={featureIndex} className="flex items-center">  
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
                       {feature}
                     </li>
@@ -112,15 +114,14 @@ export default function ServicesGrid() {
             </div>
             <div>
               <h4 className="text-xl font-semibold text-foreground mb-2" data-testid="heading-future-expansion">
-                Future Service Expansion
+                Customer Focus
               </h4>
               <p className="text-muted-foreground text-lg leading-relaxed mb-4" data-testid="text-future-expansion">
-                As we grow together, I plan to expand services to include complete document creation from scratch. 
-                This will involve working directly with your technical teams to gather information and create 
-                comprehensive documentation packages with original layouts, custom graphics, and branded templates.
+                The entire process is carried out in close cooperation with the client 
+                and the flow of information is synchronized to ensure the best quality and reflection of your expectations.
               </p>
               <div className="flex items-center text-sm text-muted-foreground">
-                <span data-testid="text-coming-soon">Coming in 2024 - Complete Documentation Solutions</span>
+                <span data-testid="text-coming-soon">2026 - Complete Documentation Solutions</span>
               </div>
             </div>
           </div>

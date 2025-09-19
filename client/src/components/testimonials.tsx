@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star, User } from "lucide-react";
 
 export default function Testimonials() {
-  const testimonials = [
+ const testimonials = [
     {
       rating: 5,
       content: "TechDoc Profesional saved our engineering team countless hours on documentation. The quality and turnaround time exceeded our expectations.",

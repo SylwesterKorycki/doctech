@@ -1,6 +1,7 @@
 import { type User, type InsertUser, type Inquiry, type InsertInquiry } from "@shared/schema";
 import { randomUUID } from "crypto";
 
+
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;

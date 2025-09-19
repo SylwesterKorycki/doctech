@@ -13,22 +13,17 @@ export default function HeroSection() {
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed" data-testid="text-hero-description">
               Free up your qualified resources from time-consuming documentation tasks. 
-              I specialize in creating professional data sheets, manuals, training materials, 
+              TDP specialize in creating professional data sheets, manuals, training materials, 
               and product renders that save your team valuable time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link href="/contact">
                 <Button size="lg" className="hover-lift" data-testid="button-start-project">
                   <Rocket className="mr-2 h-5 w-5" />
-                  Start Your Project
+                  Start project with TDP
                 </Button>
               </Link>
-              <Link href="/portfolio">
-                <Button variant="outline" size="lg" className="hover-lift" data-testid="button-view-portfolio">
-                  <Play className="mr-2 h-5 w-5" />
-                  View Portfolio
-                </Button>
-              </Link>
+             
             </div>
             <div className="flex items-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center" data-testid="feature-fast-turnaround">

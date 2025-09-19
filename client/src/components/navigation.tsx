@@ -13,7 +13,7 @@ export default function Navigation() {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "About", href: "/about" },
-    { name: "Portfolio", href: "/portfolio" },
+   // { name: "Portfolio", href: "/portfolio" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -23,7 +23,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center" data-testid="link-home-logo">
-              <img src={logoImage} alt="TechDoc Profesional" className="h-8 w-auto mr-2" />
+              <img src={logoImage} alt="TechDoc Profesional" className="h-28 w-auto mr-2" />
               <span className="text-xl font-bold text-foreground">TechDoc Profesional</span>
             </Link>
           </div>

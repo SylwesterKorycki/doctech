@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechDoc Solutions - Professional Technical Documentation Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                }
+            },
+            fontFamily: {
+                sans: ['Inter', 'system-ui', 'sans-serif'],
+            }
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --background: hsl(210 40% 98%);
+            --foreground: hsl(222.2 84% 4.9%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(222.2 84% 4.9%);
+            --popover: hsl(0 0% 100%);
+            --popover-foreground: hsl(222.2 84% 4.9%);
+            --primary: hsl(221.2 83.2% 53.3%);
+            --primary-foreground: hsl(210 40% 98%);
+            --secondary: hsl(210 40% 96%);
+            --secondary-foreground: hsl(222.2 47.4% 11.2%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(215.4 16.3% 46.9%);
+            --accent: hsl(210 40% 96%);
+            --accent-foreground: hsl(222.2 47.4% 11.2%);
+            --destructive: hsl(0 84.2% 60.2%);
+            --destructive-foreground: hsl(210 40% 98%);
+            --border: hsl(214.3 31.8% 91.4%);
+            --input: hsl(214.3 31.8% 91.4%);
+            --ring: hsl(221.2 83.2% 53.3%);
+            --radius: 8px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, hsl(221.2 83.2% 53.3%), hsl(262.1 83.3% 57.8%));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hover-lift {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, var(--card) 0%, hsl(210 40% 99%) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-background/95 backdrop-blur-sm z-50 border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-file-alt text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-foreground">TechDoc Solutions</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                        <a href="#services" class="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Services</a>
+                        <a href="#about" class="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors">About</a>
+                        <a href="#portfolio" class="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Portfolio</a>
+                        <a href="#contact" class="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                        <a href="#contact" class="bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors">Get Quote</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-muted-foreground hover:text-foreground">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 pb-16 bg-gradient-to-br from-background via-background to-secondary/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <h1 class="text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6">
+                        Professional <span class="gradient-text">Technical Documentation</span> Services
+                    </h1>
+                    <p class="text-xl text-muted-foreground mb-8 leading-relaxed">
+                        Free up your qualified resources from time-consuming documentation tasks. 
+                        I specialize in creating professional data sheets, manuals, training materials, 
+                        and product renders that save your team valuable time.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <button class="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90 transition-colors hover-lift">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Start Your Project
+                        </button>
+                        <button class="border border-border text-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-accent transition-colors hover-lift">
+                            <i class="fas fa-play mr-2"></i>
+                            View Portfolio
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-8 text-sm text-muted-foreground">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Fast Turnaround</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                            <span>Professional Quality</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-handshake text-green-500 mr-2"></i>
+                            <span>Trusted by Corporations</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <!-- Professional technical documentation workspace -->
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Professional workspace with technical documentation" 
+                         class="rounded-2xl shadow-2xl w-full h-auto hover-lift" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section class="py-16 bg-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-foreground mb-4">Why Choose TechDoc Solutions?</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Save time and resources by outsourcing your technical documentation needs to a specialist.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-lg bg-background border border-border hover-lift">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground mb-3">Time Savings</h3>
+                    <p class="text-muted-foreground">Free up your qualified engineers and technical staff from documentation tasks, allowing them to focus on core business activities.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-background border border-border hover-lift">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-dollar-sign text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground mb-3">Cost Effective</h3>
+                    <p class="text-muted-foreground">Reduce overhead costs by outsourcing documentation work instead of hiring full-time technical writers.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-background border border-border hover-lift">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-medal text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-foreground mb-3">Professional Quality</h3>
+                    <p class="text-muted-foreground">Get polished, professional documentation that reflects your company's high standards and technical expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Comprehensive Documentation Services</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    From enhancing your existing layouts to creating complete documentation packages from scratch.
+                </p>
+            </div>
+
+            <!-- Current Services -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold text-foreground mb-8 text-center">Current Service Approach</h3>
+                <div class="bg-accent/50 border border-border rounded-lg p-8 mb-12">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i class="fas fa-edit text-primary-foreground text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-foreground mb-2">Client Layout Enhancement</h4>
+                            <p class="text-muted-foreground text-lg leading-relaxed">
+                                You provide the document layout and structure. I focus on adding accurate technical information, 
+                                professional formatting, and ensuring consistency across all materials. This approach allows 
+                                for faster turnaround times while maintaining your established brand guidelines.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <div class="service-card rounded-lg p-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-table text-blue-600 text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-foreground mb-3">Data Sheets</h4>
+                    <p class="text-muted-foreground mb-4">Professional product data sheets with technical specifications, performance metrics, and compliance information.</p>
+                    <ul class="text-sm text-muted-foreground space-y-1">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Technical specifications</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Performance data</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Compliance standards</li>
+                    </ul>
+                </div>
+
+                <div class="service-card rounded-lg p-6">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-green-600 text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-foreground mb-3">CPI Documentation</h4>
+                    <p class="text-muted-foreground mb-4">Continuous Process Improvement documentation including process maps, analysis reports, and implementation guides.</p>
+                    <ul class="text-sm text-muted-foreground space-y-1">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Process mapping</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Analysis reports</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Implementation guides</li>
+                    </ul>
+                </div>
+
+                <div class="service-card rounded-lg p-6">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-book text-purple-600 text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-foreground mb-3">User Manuals</h4>
+                    <p class="text-muted-foreground mb-4">Comprehensive user manuals with step-by-step instructions, troubleshooting guides, and safety information.</p>
+                    <ul class="text-sm text-muted-foreground space-y-1">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Step-by-step procedures</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Troubleshooting guides</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Safety protocols</li>
+                    </ul>
+                </div>
+
+                <div class="service-card rounded-lg p-6">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-list-ol text-orange-600 text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-foreground mb-3">Work Instructions</h4>
+                    <p class="text-muted-foreground mb-4">Detailed work instructions for manufacturing, assembly, and quality control processes.</p>
+                    <ul class="text-sm text-muted-foreground space-y-1">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Manufacturing procedures</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Assembly instructions</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Quality control steps</li>
+                    </ul>
+                </div>
+
+                <div class="service-card rounded-lg p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-cube text-red-600 text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-foreground mb-3">Product Renders</h4>
+                    <p class="text-muted-foreground mb-4">Professional 3D product renders and technical illustrations for documentation and marketing materials.</p>
+                    <ul class="text-sm text-muted-foreground space-y-1">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>3D visualizations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Technical illustrations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Assembly diagrams</li>
+                    </ul>
+                </div>
+
+                <div class="service-card rounded-lg p-6">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-indigo-600 text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-foreground mb-3">Training Materials</h4>
+                    <p class="text-muted-foreground mb-4">Field training and installation training materials including presentations, handouts, and assessment tools.</p>
+                    <ul class="text-sm text-muted-foreground space-y-1">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Training presentations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Installation guides</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2 text-xs"></i>Assessment materials</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Future Services -->
+            <div class="bg-gradient-to-r from-primary/5 to-purple-500/5 border border-primary/20 rounded-lg p-8">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-primary to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                        <i class="fas fa-rocket text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-foreground mb-2">Future Service Expansion</h4>
+                        <p class="text-muted-foreground text-lg leading-relaxed mb-4">
+                            As we grow together, I plan to expand services to include complete document creation from scratch. 
+                            This will involve working directly with your technical teams to gather information and create 
+                            comprehensive documentation packages with original layouts, custom graphics, and branded templates.
+                        </p>
+                        <div class="flex items-center text-sm text-muted-foreground">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            <span>Coming in 2024 - Complete Documentation Solutions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-foreground mb-6">About TechDoc Solutions</h2>
+                    <p class="text-xl text-muted-foreground mb-6 leading-relaxed">
+                        I'm a technical documentation specialist focused on helping corporations streamline 
+                        their documentation processes while maintaining the highest professional standards.
+                    </p>
+                    <p class="text-muted-foreground mb-8 leading-relaxed">
+                        My approach is simple yet effective: take the documentation tasks that consume your 
+                        valuable engineering and technical resources, and handle them with precision and 
+                        professionalism. Whether it's enhancing existing layouts with accurate information 
+                        or creating comprehensive training materials, I ensure your team can focus on what they do best.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-industry text-primary text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-foreground">Corporate Focus</h4>
+                                <p class="text-sm text-muted-foreground">Specialized in serving enterprise and corporate clients</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-lightning-bolt text-primary text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-foreground">Fast Delivery</h4>
+                                <p class="text-sm text-muted-foreground">Quick turnaround times without compromising quality</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-cogs text-primary text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-foreground">Technical Expertise</h4>
+                                <p class="text-sm text-muted-foreground">Deep understanding of technical documentation requirements</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-handshake text-primary text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-foreground">Partnership Approach</h4>
+                                <p class="text-sm text-muted-foreground">Long-term relationships built on trust and results</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors hover-lift">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Get In Touch
+                        </button>
+                        <button class="border border-border text-foreground px-6 py-3 rounded-lg font-semibold hover:bg-accent transition-colors hover-lift">
+                            <i class="fas fa-download mr-2"></i>
+                            Download Capabilities
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <!-- Professional freelancer workspace setup -->
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Professional freelancer workspace" 
+                         class="rounded-2xl shadow-lg w-full h-auto hover-lift" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Portfolio Samples</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Examples of professional documentation work across various industries and document types.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Technical documentation example -->
+                <div class="bg-card border border-border rounded-lg overflow-hidden hover-lift">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                         alt="Technical documentation sample" class="w-full h-48 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold text-foreground mb-2">Data Sheet Enhancement</h4>
+                        <p class="text-sm text-muted-foreground">Industrial equipment specifications</p>
+                    </div>
+                </div>
+
+                <!-- Training materials example -->
+                <div class="bg-card border border-border rounded-lg overflow-hidden hover-lift">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                         alt="Training materials sample" class="w-full h-48 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold text-foreground mb-2">Training Material</h4>
+                        <p class="text-sm text-muted-foreground">Installation training presentation</p>
+                    </div>
+                </div>
+
+                <!-- Product documentation example -->
+                <div class="bg-card border border-border rounded-lg overflow-hidden hover-lift">
+                    <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                         alt="Product documentation sample" class="w-full h-48 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold text-foreground mb-2">User Manual</h4>
+                        <p class="text-sm text-muted-foreground">Equipment operation guide</p>
+                    </div>
+                </div>
+
+                <!-- Process documentation example -->
+                <div class="bg-card border border-border rounded-lg overflow-hidden hover-lift">
+                    <img src="https://images.unsplash.com/photo-1553028826-f4804a6dba3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                         alt="Process documentation sample" class="w-full h-48 object-cover" />
+                    <div class="p-4">
+                        <h4 class="font-semibold text-foreground mb-2">CPI Documentation</h4>
+                        <p class="text-sm text-muted-foreground">Process improvement analysis</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors hover-lift">
+                    <i class="fas fa-external-link-alt mr-2"></i>
+                    View Full Portfolio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Client Testimonials</h2>
+                <p class="text-xl text-muted-foreground">What our corporate clients say about our documentation services</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card border border-border rounded-lg p-6" data-mock="true">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex space-x-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted-foreground mb-4 italic">
+                        "TechDoc Solutions saved our engineering team countless hours on documentation. 
+                        The quality and turnaround time exceeded our expectations."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-primary"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-foreground">Sarah Johnson</p>
+                            <p class="text-sm text-muted-foreground">Engineering Manager, TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card border border-border rounded-lg p-6" data-mock="true">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex space-x-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted-foreground mb-4 italic">
+                        "Professional, efficient, and reliable. Our training materials are now consistently 
+                        high-quality and our team can focus on core development work."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-primary"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-foreground">Michael Chen</p>
+                            <p class="text-sm text-muted-foreground">Operations Director, IndustrialSys</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card border border-border rounded-lg p-6" data-mock="true">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex space-x-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted-foreground mb-4 italic">
+                        "The documentation quality improvement was immediate. Our customer support 
+                        team reports fewer technical questions thanks to clearer user manuals."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-primary"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-foreground">Lisa Rodriguez</p>
+                            <p class="text-sm text-muted-foreground">Product Manager, ManufacturingPro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Transparent Pricing</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Clear, competitive pricing for professional documentation services. All prices include revisions and quality assurance.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-card border border-border rounded-lg p-6 hover-lift">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-table text-2xl text-blue-600 mb-2"></i>
+                        <h4 class="text-lg font-semibold text-foreground">Data Sheets</h4>
+                    </div>
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold text-primary">$150</div>
+                        <div class="text-sm text-muted-foreground">per page</div>
+                    </div>
+                    <ul class="text-sm text-muted-foreground space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Technical specifications</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Performance data</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Formatting & layout</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>2 revisions included</li>
+                    </ul>
+                </div>
+
+                <div class="bg-card border border-border rounded-lg p-6 hover-lift">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-book text-2xl text-green-600 mb-2"></i>
+                        <h4 class="text-lg font-semibold text-foreground">User Manuals</h4>
+                    </div>
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold text-primary">$75</div>
+                        <div class="text-sm text-muted-foreground">per page</div>
+                    </div>
+                    <ul class="text-sm text-muted-foreground space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Step-by-step instructions</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Safety information</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Troubleshooting guides</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></li>2 revisions included</li>
+                    </ul>
+                </div>
+
+                <div class="bg-card border border-border rounded-lg p-6 hover-lift">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-graduation-cap text-2xl text-purple-600 mb-2"></i>
+                        <h4 class="text-lg font-semibold text-foreground">Training Materials</h4>
+                    </div>
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold text-primary">$200</div>
+                        <div class="text-sm text-muted-foreground">per hour of content</div>
+                    </div>
+                    <ul class="text-sm text-muted-foreground space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Presentation slides</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Handout materials</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Assessment tools</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>3 revisions included</li>
+                    </ul>
+                </div>
+
+                <div class="bg-card border border-primary rounded-lg p-6 hover-lift relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">Most Popular</span>
+                    </div>
+                    <div class="text-center mb-4">
+                        <i class="fas fa-cube text-2xl text-red-600 mb-2"></i>
+                        <h4 class="text-lg font-semibold text-foreground">Custom Projects</h4>
+                    </div>
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold text-primary">$85</div>
+                        <div class="text-sm text-muted-foreground">per hour</div>
+                    </div>
+                    <ul class="text-sm text-muted-foreground space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Product renders</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>CPI documentation</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Custom layouts</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Unlimited revisions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-muted-foreground mb-6">Volume discounts available for large projects. Get a custom quote for your specific needs.</p>
+                <button class="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors hover-lift">
+                    <i class="fas fa-calculator mr-2"></i>
+                    Get Custom Quote
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-foreground mb-4">Start Your Project Today</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Ready to free up your team's time? Get in touch to discuss your documentation needs and receive a detailed quote.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-background border border-border rounded-lg p-8">
+                    <h3 class="text-2xl font-semibold text-foreground mb-6">Project Inquiry</h3>
+                    <form class="space-y-6">
+                        <!-- TODO: Implement form submission logic -->
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-foreground mb-2">First Name *</label>
+                                <input type="text" class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-foreground mb-2">Last Name *</label>
+                                <input type="text" class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">Company *</label>
+                            <input type="text" class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">Email *</label>
+                            <input type="email" class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">Phone</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">Services Needed *</label>
+                            <select class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background" required>
+                                <option value="">Select services...</option>
+                                <option value="data-sheets">Data Sheets</option>
+                                <option value="manuals">User Manuals</option>
+                                <option value="training">Training Materials</option>
+                                <option value="cpi">CPI Documentation</option>
+                                <option value="renders">Product Renders</option>
+                                <option value="multiple">Multiple Services</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">Project Timeline</label>
+                            <select class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background">
+                                <option value="">Select timeline...</option>
+                                <option value="rush">Rush (1-2 weeks)</option>
+                                <option value="standard">Standard (2-4 weeks)</option>
+                                <option value="flexible">Flexible (4+ weeks)</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">Project Description *</label>
+                            <textarea rows="4" class="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent bg-background" placeholder="Please describe your documentation needs, number of pages, existing layouts, etc." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-primary-foreground py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Submit Project Inquiry
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-background border border-border rounded-lg p-8">
+                        <h3 class="text-2xl font-semibold text-foreground mb-6">Get In Touch</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-foreground">Email</h4>
+                                    <p class="text-muted-foreground">hello@techdocsolutions.com</p>
+                                    <p class="text-sm text-muted-foreground">Response within 24 hours</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-phone text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-foreground">Phone</h4>
+                                    <p class="text-muted-foreground">(555) 123-4567</p>
+                                    <p class="text-sm text-muted-foreground">Mon-Fri, 9AM-5PM EST</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-calendar text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-foreground">Schedule Consultation</h4>
+                                    <p class="text-muted-foreground">Free 30-minute project discussion</p>
+                                    <button class="text-primary hover:text-primary/80 text-sm font-medium mt-1">
+                                        <i class="fas fa-external-link-alt mr-1"></i>
+                                        Book Meeting
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 rounded-lg p-6">
+                        <h4 class="font-semibold text-foreground mb-2">Quick Start Process</h4>
+                        <ol class="text-sm text-muted-foreground space-y-2">
+                            <li class="flex items-start">
+                                <span class="bg-primary text-primary-foreground w-5 h-5 rounded-full flex items-center justify-center text-xs font-semibold mr-3 mt-0.5">1</span>
+                                Submit your project inquiry with details
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-primary text-primary-foreground w-5 h-5 rounded-full flex items-center justify-center text-xs font-semibold mr-3 mt-0.5">2</span>
+                                Receive detailed quote within 24 hours
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-primary text-primary-foreground w-5 h-5 rounded-full flex items-center justify-center text-xs font-semibold mr-3 mt-0.5">3</span>
+                                Approve quote and provide source materials
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-primary text-primary-foreground w-5 h-5 rounded-full flex items-center justify-center text-xs font-semibold mr-3 mt-0.5">4</span>
+                                Receive professional documentation on time
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-foreground text-background py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-file-alt text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">TechDoc Solutions</span>
+                    </div>
+                    <p class="text-gray-300 mb-4 max-w-md">
+                        Professional technical documentation services for corporations. 
+                        Free up your team's time while maintaining the highest quality standards.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-primary transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-primary transition-colors">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#services" class="hover:text-primary transition-colors">Data Sheets</a></li>
+                        <li><a href="#services" class="hover:text-primary transition-colors">User Manuals</a></li>
+                        <li><a href="#services" class="hover:text-primary transition-colors">Training Materials</a></li>
+                        <li><a href="#services" class="hover:text-primary transition-colors">CPI Documentation</a></li>
+                        <li><a href="#services" class="hover:text-primary transition-colors">Product Renders</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+                        <li><a href="#portfolio" class="hover:text-primary transition-colors">Portfolio</a></li>
+                        <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 text-sm">
+                    &copy; 2024 TechDoc Solutions. All rights reserved.
+                </p>
+                <p class="text-gray-300 text-sm mt-2 md:mt-0">
+                    Professional documentation services for enterprise clients.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Implement actual form submission logic
+                alert('Thank you for your inquiry! We will respond within 24 hours.');
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.md\\:hidden button');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function() {
+                // TODO: Implement mobile menu toggle functionality
+                console.log('Mobile menu toggle clicked');
+            });
+        }
+    })();
+    </script>
+</body>
+</html>
