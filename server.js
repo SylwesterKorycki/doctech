@@ -2,12 +2,6 @@ import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
 
-const PORT = process.env.PORT || 4000;
-
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -20,14 +14,14 @@ app.post("/send", async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: "Outlook", // lub "gmail"
       auth: {
-        user: "korycki.sylwester@outlook.com", // <-- Twój mail
-        pass: "TWOJE_HASŁO_APLIKACYJNE",       // <-- tu musi być hasło/aplikacyjne
+        user: process.env.MAIL_USER, // zamiast wpisywać na sztywno
+        pass: process.env.MAIL_PASS, // hasło aplikacyjne w ENV
       },
     });
 
     await transporter.sendMail({
       from: `"Website Contact" <${email}>`,
-      to: "korycki.sylwester@outlook.com", // gdzie ma przyjść wiadomość
+      to: process.env.MAIL_USER, // bezpieczniej też z ENV
       subject: "New Project Inquiry",
       text: `
         Name: ${name}
@@ -49,6 +43,8 @@ app.post("/send", async (req, res) => {
   }
 });
 
-app.listen(3001, () => {
-  console.log("Server running on http://localhost:3001");
+// 🔑 kluczowe zmiany dla Render:
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
